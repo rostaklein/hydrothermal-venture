@@ -4,35 +4,46 @@ export const MainWrapper = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 24px 48px;
-  grid-auto-flow: row;
-  grid-row-gap: 24px;
-  grid-column-gap: 48px;
+  @media only screen and (max-width: 900px) {
+    padding: 24px 16px;
+  }
 `;
 
 export const Textarea = styled.textarea`
-  width: 240px;
+  min-width: 240px;
+  width: 100%;
   min-height: 460px;
   font-family: monospace;
   padding: 8px;
   color: gray;
   border: none;
+  box-sizing: border-box;
+  @media only screen and (max-width: 900px) {
+    min-height: 160px;
+  }
 `;
 
-export const Header = styled.header`
-  grid-area: header;
+export const Header = styled.header``;
+
+export const MainLayout = styled.div`
+  display: flex;
+  @media only screen and (max-width: 900px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const InputAreaWrapper = styled.aside`
-  grid-area: input;
   margin-right: 24px;
+  width: 100%;
+  flex: 1;
   label {
     cursor: pointer;
   }
 `;
 
 export const SolutionAreaWrapper = styled.main`
-  grid-area: main;
-  overflow: hidden;
+  flex: 5;
+  max-width: 100%;
   code {
     background: rgba(0, 0, 0, 0.05);
     padding: 4px 8px;

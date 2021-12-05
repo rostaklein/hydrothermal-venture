@@ -32,7 +32,7 @@ function App() {
         <h1 style={{ marginBottom: 0 }}>🎄 Hydrothermal Venture 🌊 </h1>
         <sub>Advent of Code 2021, day 5</sub>
       </S.Header>
-      <div style={{ display: "flex" }}>
+      <S.MainLayout>
         <S.InputAreaWrapper>
           <h2>Input</h2>
           <div style={{ marginBottom: 16 }}>
@@ -59,7 +59,7 @@ function App() {
             <Canvas boardSize={boardSize} board={board} />
           </S.CanvasWrapper>
         </S.SolutionAreaWrapper>
-      </div>
+      </S.MainLayout>
       <S.FooterWrapper>
         <Footer />
       </S.FooterWrapper>
