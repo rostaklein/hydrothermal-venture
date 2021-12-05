@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { Canvas } from "./Canvas";
+import { EXAMPLE_INPUT } from "./constants";
+import * as S from "./styles";
 
 function App() {
+  const [input, setInput] = useState(EXAMPLE_INPUT);
+  useEffect(() => {
+    document.title = "Hydrothermal Venture";
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <S.MainWrapper>
+      <S.Header>
+        <h1 style={{ marginBottom: 0 }}>🎄 Hydrothermal Venture 🌊 </h1>
+        <sub>Advent of Code 2021, day 5</sub>
+      </S.Header>
+      <S.InputAreaWrapper>
+        <h2>Input</h2>
+        <S.Textarea value={input} onChange={(e) => setInput(e.target.value)} />
+      </S.InputAreaWrapper>
+      <S.SolutionAreaWrapper>
+        <h2>Solution</h2>
+        <Canvas />
+      </S.SolutionAreaWrapper>
+    </S.MainWrapper>
   );
 }
 
