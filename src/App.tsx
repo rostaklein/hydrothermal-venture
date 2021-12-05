@@ -15,7 +15,6 @@ function App() {
     const calc = new HydroThermalVentureCalc(parseAndClearInputData(input));
 
     calc.run();
-    console.log(calc.boardSize);
 
     return {
       boardSize: calc.boardSize,

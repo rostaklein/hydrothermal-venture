@@ -22,8 +22,6 @@ export const Canvas: React.FunctionComponent<ICanvasProps> = (props) => {
 
       painter.draw();
     }
-
-    console.log({ canvas });
   }, [canvasRef, props.boardSize, props.board]);
 
   return <canvas ref={canvasRef} />;

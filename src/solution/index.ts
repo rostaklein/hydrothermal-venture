@@ -51,13 +51,9 @@ export class HydroThermalVentureCalc {
 
       if (fromY === toY) {
         this.drawStraightLine(fromX, toX, "y", fromY);
-        // console.log("Y straight", instruction);
       } else if (fromX === toX) {
         this.drawStraightLine(fromY, toY, "x", fromX);
-        // console.log("X straight", instruction);
       } else {
-        // console.count("diagonal");
-        // console.log("diagonal", instruction);
         this.drawDiagonalLine(instruction);
       }
     }
@@ -88,12 +84,10 @@ export class HydroThermalVentureCalc {
     const directionY = from[1] < to[1] ? "forwards" : "backwards";
 
     const distance = Math.abs(to[0] - from[0]);
-    // console.log({ from, to });
 
     for (let i = 0; i <= distance; i++) {
       const movedX = directionX === "forwards" ? from[0] + i : from[0] - i;
       const movedY = directionY === "forwards" ? from[1] + i : from[1] - i;
-      // console.log({ movedX, movedY });
       this.markPositionVisited(this.getMapKey(movedX, movedY));
     }
   }
@@ -101,7 +95,6 @@ export class HydroThermalVentureCalc {
   private markPositionVisited(mapKey: string) {
     const exists = this.board.get(mapKey);
     if (exists) {
-      // console.log({ exists, mapKey });
       this.board.set(mapKey, exists + 1);
     } else {
       this.board.set(mapKey, 1);
