@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# 🎄 Hydrothermal Venture 🌊
+
+Advent of Code 2021 | day 5 challenge, visualised
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

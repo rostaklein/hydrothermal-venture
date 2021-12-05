@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Canvas } from "./canvas/Canvas";
 import { EXAMPLE_INPUT } from "./constants";
+import { Footer } from "./Footer";
 import { HydroThermalVentureCalc } from "./solution";
 import * as S from "./styles";
 import { parseAndClearInputData } from "./utils";
@@ -59,6 +60,9 @@ function App() {
           </S.CanvasWrapper>
         </S.SolutionAreaWrapper>
       </div>
+      <S.FooterWrapper>
+        <Footer />
+      </S.FooterWrapper>
     </S.MainWrapper>
   );
 }
