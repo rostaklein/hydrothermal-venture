@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Canvas } from "./canvas/Canvas";
 import { EXAMPLE_INPUT } from "./constants";
 import { HydroThermalVentureCalc } from "./solution";
@@ -7,17 +7,17 @@ import { parseAndClearInputData } from "./utils";
 
 function App() {
   const [input, setInput] = useState(EXAMPLE_INPUT);
+  const [result, setResult] = useState<number | null>(null);
   const [includeDiagonal, setIncludeDiagonal] = useState(true);
-  useEffect(() => {
-    document.title = "Hydrothermal Venture";
-  });
 
-  const result = useMemo(() => {
+  const { board, boardSize } = useMemo(() => {
     const calc = new HydroThermalVentureCalc(parseAndClearInputData(input), {
       includeDiagonal,
     });
 
-    calc.run();
+    const result = calc.run();
+
+    setResult(result);
 
     return {
       boardSize: calc.boardSize,
@@ -34,7 +34,7 @@ function App() {
       <div style={{ display: "flex" }}>
         <S.InputAreaWrapper>
           <h2>Input</h2>
-          <div style={{ marginBottom: 10 }}>
+          <div style={{ marginBottom: 16 }}>
             <input
               type="checkbox"
               name="diagonal"
@@ -51,8 +51,11 @@ function App() {
         </S.InputAreaWrapper>
         <S.SolutionAreaWrapper>
           <h2>Solution</h2>
+          <p>
+            At least two points overlap for <code>{result}</code> points
+          </p>
           <S.CanvasWrapper>
-            <Canvas boardSize={result.boardSize} board={result.board} />
+            <Canvas boardSize={boardSize} board={board} />
           </S.CanvasWrapper>
         </S.SolutionAreaWrapper>
       </div>

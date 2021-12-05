@@ -10,7 +10,7 @@ export const MainWrapper = styled.div`
 `;
 
 export const Textarea = styled.textarea`
-  width: 180px;
+  width: 240px;
   min-height: 460px;
   font-family: monospace;
   padding: 8px;
@@ -25,11 +25,19 @@ export const Header = styled.header`
 export const InputAreaWrapper = styled.aside`
   grid-area: input;
   margin-right: 24px;
+  label {
+    cursor: pointer;
+  }
 `;
 
 export const SolutionAreaWrapper = styled.main`
   grid-area: main;
   overflow: hidden;
+  code {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 4px 8px;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 export const CanvasWrapper = styled.main`
