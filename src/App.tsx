@@ -7,12 +7,15 @@ import { parseAndClearInputData } from "./utils";
 
 function App() {
   const [input, setInput] = useState(EXAMPLE_INPUT);
+  const [includeDiagonal, setIncludeDiagonal] = useState(true);
   useEffect(() => {
     document.title = "Hydrothermal Venture";
   });
 
   const result = useMemo(() => {
-    const calc = new HydroThermalVentureCalc(parseAndClearInputData(input));
+    const calc = new HydroThermalVentureCalc(parseAndClearInputData(input), {
+      includeDiagonal,
+    });
 
     calc.run();
 
@@ -20,7 +23,7 @@ function App() {
       boardSize: calc.boardSize,
       board: calc.board,
     };
-  }, [input]);
+  }, [input, includeDiagonal]);
 
   return (
     <S.MainWrapper>
@@ -31,6 +34,16 @@ function App() {
       <div style={{ display: "flex" }}>
         <S.InputAreaWrapper>
           <h2>Input</h2>
+          <div style={{ marginBottom: 10 }}>
+            <input
+              type="checkbox"
+              name="diagonal"
+              id="diagonal"
+              checked={includeDiagonal}
+              onChange={() => setIncludeDiagonal(!includeDiagonal)}
+            />
+            <label htmlFor="diagonal">include diagonal lines</label>
+          </div>
           <S.Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}

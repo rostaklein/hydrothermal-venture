@@ -13,7 +13,7 @@ export class HydroThermalVentureCalc {
   private instructions: Instruction[];
   public board: Board = new Map();
 
-  constructor(input: string[]) {
+  constructor(input: string[], private options: { includeDiagonal: boolean }) {
     this.instructions = input.map(this.parseInstruction);
   }
 
@@ -54,7 +54,9 @@ export class HydroThermalVentureCalc {
       } else if (fromX === toX) {
         this.drawStraightLine(fromY, toY, "x", fromX);
       } else {
-        this.drawDiagonalLine(instruction);
+        if (this.options.includeDiagonal) {
+          this.drawDiagonalLine(instruction);
+        }
       }
     }
   }
