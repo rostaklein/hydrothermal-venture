@@ -15,7 +15,7 @@ export const Canvas: React.FunctionComponent<ICanvasProps> = (props) => {
     if (canvas) {
       const context = canvas.getContext("2d")!;
 
-      const painter = new CanvasPainter(context, {
+      const painter = new CanvasPainter(context, props.board, {
         columns: props.boardSize[0],
         rows: props.boardSize[1],
       });
@@ -24,7 +24,7 @@ export const Canvas: React.FunctionComponent<ICanvasProps> = (props) => {
     }
 
     console.log({ canvas });
-  }, [canvasRef, props.boardSize]);
+  }, [canvasRef, props.boardSize, props.board]);
 
   return <canvas ref={canvasRef} />;
 };

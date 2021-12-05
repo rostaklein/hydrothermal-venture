@@ -58,7 +58,7 @@ export class HydroThermalVentureCalc {
       } else {
         // console.count("diagonal");
         // console.log("diagonal", instruction);
-        // this.drawDiagonalLine(instruction);
+        this.drawDiagonalLine(instruction);
       }
     }
   }
