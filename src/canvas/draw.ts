@@ -65,9 +65,21 @@ export class CanvasPainter {
 
   private putNumbers() {
     for (const [coordinate, count] of this.board) {
-      const [x, y] = coordinate.split(",");
-      this.type(String(count), Number(x), Number(y));
+      const [x, y] = coordinate.split(",").map(Number);
+      this.type(String(count), x, y);
+      this.drawSquareFill(x, y, count);
     }
+  }
+
+  private drawSquareFill(x: number, y: number, count: number) {
+    this.ctx.beginPath();
+    this.ctx.fillStyle = `rgba(0,0,0,${count * 0.1})`;
+    this.ctx.fillRect(
+      x * this.gridSize,
+      y * this.gridSize,
+      this.gridSize,
+      this.gridSize
+    );
   }
 
   private type(text: string, x: number, y: number) {
